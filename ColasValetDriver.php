@@ -1,5 +1,9 @@
 <?php
 
+namespace Valet\Drivers\Custom;
+
+use Valet\Drivers\ValetDriver;
+
 class ColasValetDriver extends ValetDriver
 {
     /**
@@ -10,7 +14,7 @@ class ColasValetDriver extends ValetDriver
      * @param  string  $uri
      * @return bool
      */
-    public function serves($sitePath, $siteName, $uri)
+    public function serves(string $sitePath, string $siteName, string $uri): bool
     {
         if (file_exists($sitePath.'/Dailymotion.php')) {
           return true; 
@@ -44,7 +48,7 @@ class ColasValetDriver extends ValetDriver
      * @param  string  $uri
      * @return string
      */
-    public function frontControllerPath($sitePath, $siteName, $uri)
+    public function frontControllerPath(string $sitePath, string $siteName, string $uri): ?string
     {
        $url_param = parse_url($_SERVER['REQUEST_URI'])['path'];
 
